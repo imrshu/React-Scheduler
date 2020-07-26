@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { ScheduleComponent, Inject, Week, Day, Month, DragAndDrop } from '@syncfusion/ej2-react-schedule';
+
+
+class App extends Component {
+
+  data = {
+    dataSource: [
+      {
+        Id: 1,
+        StartTime: new Date(2020, 7, 26),
+        EndTime: new Date(2020, 7, 26),
+        Subject: 'Justin Clark'
+      }
+    ]
+  }
+
+  render() {
+    return (
+      <ScheduleComponent eventSettings={this.data} timezone='Asia/Kolkata'>
+        <Inject services={[Week, Day, Month, DragAndDrop ]} />
+      </ScheduleComponent>
+    );
+  }
 }
 
 export default App;
